@@ -1,0 +1,62 @@
+/* ─── Stepper --------------------------------------------------------- */
+:root {
+  --primary:#2ecc71;   /* vert de ta charte */
+  --muted:#d1d5db;     /* gris clair ligne / cercle off */
+}
+
+/* barre complète */
+.stepper {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:1rem;          /* espace régulier entre chaque bloc */
+  list-style:none;
+  padding:0;
+}
+
+/* bloc = cercle + label */
+.step {
+  display:flex;
+  align-items:center;
+  gap:.2rem;
+  font-size:.95rem;
+  font-weight:500;
+  white-space:nowrap;
+}
+
+/* cercle générique */
+.step__ball{
+  width:2rem;
+  height:2rem;
+  border:2px solid var(--muted);
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--muted);
+  font-weight:600;
+}
+
+/* trait entre les steps */
+.step__line{
+  flex:0 0 1rem;
+  height:1px;
+  background:var(--muted);
+}
+
+/* -------- états -------- */
+.step--done .step__ball{
+  border-color:var(--primary);
+  color:var(--primary);
+  font-size:1rem;      /* ✓ un peu plus grand */
+}
+.step--done .step__ball::before{content:"✓";}
+.step--done .step__label{color:var(--primary);}
+.step--done + .step__line{background:var(--primary);}
+
+.step--active .step__ball{
+  background:var(--primary);
+  border-color:var(--primary);
+  color:#fff;
+}
+.step--active .step__label{color:var(--primary);}

@@ -1,0 +1,7 @@
+/* frontend/src/styles/globals.css — ajout ou mise à jour */
+:root {
+  --color-primary: #F5C400;
+}
+.text-primary { color: var(--color-primary); }
+.bg-primary { background-color: var(--color-primary); }
+.focus\:ring-primary:focus { --tw-ring-color: var(--color-primary); }

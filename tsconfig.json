@@ -1,0 +1,19 @@
+// frontend/tsconfig.json
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,                // <— autorise require()/import mix
+    "allowSyntheticDefaultImports": true,   // <— autorise les imports default même sans default export
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+    // …le reste de ta config
+  },
+  "include": ["src"],
+  
+}

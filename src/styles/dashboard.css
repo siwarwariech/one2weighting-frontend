@@ -1,0 +1,125 @@
+/* src/styles/dashboard.css */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+:root{
+  --primary:#2ecc71;                    /* master green */
+  --accent:var(--primary);              /* everything uses the same green */
+  --sidebar-bg-from:#e6fbe9;            /* soft-green gradient */
+  --sidebar-bg-to:#f8fffa;
+  --text-dark:#111827;
+  --text-muted:#6b7280;
+  --border:#e5e7eb;
+  --radius:8px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
+
+.dashboard-wrapper{
+  display:grid;
+  grid-template-columns:240px 1fr;
+  min-height:100vh;
+}
+
+/* ───────────── Sidebar ───────────── */
+.sidebar{
+  background:linear-gradient(165deg,var(--sidebar-bg-from),var(--sidebar-bg-to));
+  padding:1.5rem 1rem;
+  display:flex;
+  flex-direction:column;
+  gap:2rem;
+  border-right:1px solid var(--border);
+}
+
+.sidebar-logo{
+  font-size:1.55rem;
+  font-weight:700;
+  color:var(--accent);
+}
+
+.nav-group{display:flex;flex-direction:column;gap:.5rem;}
+.nav-link{
+  display:flex;align-items:center;gap:.75rem;
+  padding:.55rem .75rem;
+  border-radius:var(--radius);
+  color:var(--text-dark);text-decoration:none;font-weight:500;
+  transition:background .15s,filter .15s;
+}
+.nav-link:hover{background:rgba(0,0,0,.04);}
+.nav-link.active{background:var(--primary);color:#fff;}
+.nav-link svg{flex-shrink:0;width:18px;height:18px;}
+
+/* ───────────── Main panel ───────────── */
+.main{display:flex;flex-direction:column;padding:2rem 2.5rem;overflow-x:hidden;}
+
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;}
+
+.breadcrumb{display:flex;gap:.5rem;font-size:.875rem;color:var(--primary);}
+.breadcrumb a{color:var(--accent);text-decoration:none;}
+.breadcrumb a:hover{text-decoration:underline;}
+
+.user-box{display:flex;align-items:center;gap:.75rem;font-size:.875rem;font-weight:500;}
+
+.user-box .avatar{
+  width:36px;height:36px;border-radius:50%;
+  background:#c7f5d9;display:flex;align-items:center;justify-content:center;
+}
+
+.bell{position:relative;cursor:pointer;}
+.bell svg{width:20px;height:20px;color:var(--text-dark);}
+.bell::after{
+  content:"";position:absolute;top:-2px;right:-2px;
+  width:8px;height:8px;background:#eb5757;border-radius:50%;
+}
+
+/* ───────────── Table ───────────── */
+.table-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:auto;}
+
+.project-table{
+  width:100%;border-collapse:collapse;min-width:760px;
+}
+.project-table thead{background:#f9fafb;text-align:left;}
+.project-table th,
+.project-table td{padding:1rem 1.25rem;font-size:.95rem;}
+.project-table th{color:var(--text-muted);font-weight:500;}
+.project-table tbody tr:not(:last-child) td{border-bottom:1px solid var(--border);}
+
+.status{
+  display:inline-block;padding:.25rem .9rem;font-size:.75rem;font-weight:500;border-radius:999px;
+}
+.status--finished{background:#e9f9ef;color:#27ae60;}
+.status--notstarted{background:#f3f4f6;color:#6b7280;}
+
+/* ───────────── Icon buttons ───────────── */
+.icon-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:40px;height:40px;border:none;border-radius:6px;cursor:pointer;
+  transition:filter .15s;
+}
+.icon-btn svg{width:18px;height:18px;color:#fff;}
+.icon-btn.primary{background:var(--primary);}   /* green, not blue */
+.icon-btn.warning{background:#ffb703;}
+.icon-btn:hover{filter:brightness(1.1);}
+
+/* ───────────── Responsiveness ───────────── */
+@media(max-width:1024px){
+  .dashboard-wrapper{grid-template-columns:72px 1fr;}
+  .sidebar{padding:1rem .5rem;align-items:center;}
+  .nav-link span{display:none;}
+  .sidebar-logo{font-size:1.25rem;}
+}
+
+@media(max-width:768px){
+  .dashboard-wrapper{grid-template-columns:1fr;}
+  .sidebar{
+    position:fixed;inset:0 60% 0 0;
+    transform:translateX(-100%);transition:transform .25s ease;z-index:50;
+  }
+  .sidebar.open{transform:none;}
+  .main{padding:1.5rem;}
+}
+
+/* ───────────── Card helper ───────────── */
+.card{
+  background:#fff;border:1px solid var(--border);border-radius:var(--radius);
+  box-shadow:0 3px 10px rgba(0,0,0,.04);padding:2rem;
+}

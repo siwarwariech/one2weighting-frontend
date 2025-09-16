@@ -1,0 +1,617 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* grille deux colonnes */
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+/* ───────── Colonne image ───────── */
+.hero {
+  position: relative;
+}
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(75%);
+}
+.hero-caption {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  translate: -50% 0;
+  width: 90%;
+  text-align: center;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* ───────── Colonne formulaire ───────── */
+.signup {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #fff;
+  padding: 40px 60px;
+  justify-content: center;
+}
+.signup h4 {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+.signup hr {
+  border: none;
+  height: 1px;
+  background: #e5e7eb;
+  margin-bottom: 10px;
+}
+
+.name-field {
+  display: flex;
+  gap: 10px;
+}
+.name-field div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+input:focus {
+  border-color: #2ecc71;
+}
+
+.terms {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 14px;
+}
+
+.submit {
+  margin-top: 10px;
+  background: #2ecc71;
+  color: #fff;
+  border: 1px solid #2ecc71;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+.submit:hover {
+  filter: brightness(1.1);
+}
+
+p {
+  text-align: center;
+  font-size: 14px;
+}
+p a {
+  color: #2ecc71;
+  text-decoration: none;
+}
+
+/* responsive : stack vertical sous 768 px */
+@media (max-width: 768px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
+  .hero {
+    display: none;
+  }
+}
+/* ------------------- variations Sign-Up vs Sign-In ------------------- */
+.signup h4              { color: #2ECC71; }      /* titre vert            */
+.signup .submit         { background:#2ECC71; border-color:#2ECC71; }
+
+.signin h4              { color:#2ECC71 }       /* titre bleu            */
+.signin .submit         { background:#2ECC71; border-color:#2ECC71; }
+
+.signin input:focus     { border-color:#2ECC71; }
+.signin p a             { color:#2ECC71; }
+/* -------- lien de bas de formulaire -------- */
+.auth-switch {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 18px;
+}
+.auth-switch a {
+  text-decoration: none;
+  font-weight: 600;      /* gras comme sur la capture */
+}
+
+/* couleurs différentes pour chaque formulaire */
+.signup .auth-switch a { color: #17a2b8; }   /* bleu (Sign In) ⇢ Sign Up */
+.signin .auth-switch a { color: #2ecc71; }   /* vert  (Sign Up) ⇢ Log In */
+.signin {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;          /* espace vertical entre les éléments */
+  justify-content: center;   /* centre verticalement */
+  background: #fff;
+  padding: 40px 60px;
+}
+/* ----- Header de l’app ----- */
+.app-header {
+  /* horizontal padding gérée par les classes Tailwind px-8 sm:px-16 */
+  color: #2ecc71;
+  font-size: 1.45rem;
+  font-weight: 600;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  /* optionnel : décale verticalement vers le haut */
+  margin-bottom: -1rem; 
+}
+
+/* src/styles/Home.css */
+
+/* full-screen background */
+.home-hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: url('/src/assets/heroImg.png') no-repeat center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* semi-opaque “card” to house your form */
+.home-hero .auth-card {
+  background-color: rgba(255,255,255,0.85);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+}
+/* ---------------- Chatbot layout ---------------- */
+.chat-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+}
+
+.chat-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  height: 34rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;              /* keeps bubbles inside card */
+}
+
+/* chat history */
+.chat-history {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* message bubbles */
+.bot-row,
+.user-row {
+  display: flex;
+  gap: 0.5rem;
+  animation: fade-in 250ms ease-out both;
+}
+.bot-bubble {
+  background: #27ae60;
+  color: #fff;
+  border-radius: 18px;
+  padding: 0.4rem 0.8rem;
+  max-width: 75%;
+  line-height: 1.4;
+}
+.user-bubble {
+  background: #219653;
+  color: #fff;
+  border-radius: 18px;
+  padding: 0.4rem 0.8rem;
+  margin-left: auto;
+  max-width: 75%;
+  line-height: 1.4;
+}
+
+/* quick-reply chips */
+.quick-chip {
+  background: #d1fae5;
+  color: #065f46;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: filter 0.15s;
+}
+.quick-chip:hover { filter: brightness(1.08); }
+
+/* input section */
+.input-bar {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+.input-bar input {
+  flex: 1;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 0.45rem 0.75rem;
+}
+.input-bar input:focus { border-color: #2ecc71; }
+.input-bar button {
+  background: #219653;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0 1rem;
+  cursor: pointer;
+}
+.input-bar button:hover { filter: brightness(1.08); }
+
+/* small circular avatar */
+.bot-avatar {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  background: #a7f3d0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* ───────── Stepper (5 étapes max) ───────── */
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  font-family: Poppins, sans-serif;
+  counter-reset: step;
+}
+
+.stepper__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #9ca3af;                 /* gris par défaut */
+  font-weight: 500;
+}
+
+/* cercle numéroté */
+.stepper__item::before {
+  counter-increment: step;
+  content: counter(step);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 2px solid #d1d5db;      /* gris clair */
+  border-radius: 50%;
+  font-size: 0.9rem;
+}
+
+/* barre de liaison */
+.stepper__item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: -18px;
+  top: 50%;
+  width: 36px;
+  height: 2px;
+  background: #d1d5db;
+  transform: translateY(-50%);
+}
+
+/* ÉTAPE TERMINÉE */
+.stepper__item--done {
+  color: #10b981;                 /* vert texte */
+}
+.stepper__item--done::before {
+  content: "✓";
+  background: #10b981;
+  color: #fff;
+  border-color: #10b981;
+}
+
+/* ÉTAPE COURANTE */
+.stepper__item--current {
+  color: #10b981;
+}
+.stepper__item--current::before {
+  border-color: #10b981;
+}
+
+/* ---------------------------------------------------------------- */
+
+/* Bouton vert cohérent */
+.btn-primary {
+  background: #2ecc71;
+  border: 1px solid #2ecc71;
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: filter 0.15s;
+}
+.btn-primary:hover {
+  filter: brightness(1.08);
+}
+
+/* Add these styles to your existing CSS */
+.avatar {
+  border: 2px solid #2ecc71;
+}
+
+.user-info {
+  transition: all 0.2s ease;
+}
+
+.user-info:hover {
+  background-color: #f0fdf4;
+}
+
+.icon-btn {
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.icon-btn.primary {
+  color: #2ecc71;
+  background-color: #f0fdf4;
+}
+
+.icon-btn.warning {
+  color: #f59e0b;
+  background-color: #fef3c7;
+}
+
+.icon-btn:hover {
+  transform: scale(1.05);
+}
+
+.status {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status--finished {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.status--notstarted {
+  background-color: #e5e7eb;
+  color: #4b5563;
+}
+
+.project-table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.project-table th {
+  padding: 12px 16px;
+  font-weight: 500;
+  color: #6b7280;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.project-table td {
+  padding: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.table-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+/* Add to your CSS file */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.grid-cols-4 {
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+}
+
+.bg-green-50 {
+  background-color: #f0fdf4;
+}
+
+.text-green-600 {
+  color: #16a34a;
+}
+
+.text-green-700 {
+  color: #15803d;
+}
+
+.text-green-800 {
+  color: #166534;
+}
+
+.border-green-200 {
+  border-color: #bbf7d0;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.shadow-sm {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.hover\:bg-gray-50:hover {
+  background-color: #f9fafb;
+}
+
+.transition-colors {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+/* In your main CSS file */
+.dashboard-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+  overflow: auto;
+}
+
+/* Add these styles to your existing CSS */
+
+/* Enhanced form styling */
+.signin {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #fff;
+  padding: 40px 60px;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.signin::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #2ecc71, #3498db);
+}
+
+.space-y-4 > * + * {
+  margin-top: 1rem;
+}
+
+.input {
+  padding: 12px 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 40px;
+}
+
+.input:focus {
+  border-color: #2ecc71;
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
+}
+
+.submit {
+  margin-top: 10px;
+  background: #2ecc71;
+  color: #fff;
+  border: 1px solid #2ecc71;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.submit:hover {
+  background: #27ae60;
+  border-color: #27ae60;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(46, 204, 113, 0.3);
+}
+
+.submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.error {
+  color: #e74c3c;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Animation for the form */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.signin form {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .signin {
+    padding: 30px 20px;
+  }
+  
+  .hero-caption {
+    font-size: 1.4rem;
+  }
+}

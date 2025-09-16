@@ -1,0 +1,126 @@
+/* ───────── Container ───────── */
+.signup {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 420px;
+  animation: slideUp 0.8s ease-out;
+  margin: auto;
+}
+
+/* ───────── Title ───────── */
+.signup h4 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #2d3748;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.signup hr {
+  border: none;
+  height: 3px;
+  background: linear-gradient(90deg, #2ecc71, #27ae60);
+  margin-bottom: 2rem;
+  border-radius: 2px;
+}
+
+/* ───────── Labels ───────── */
+.signup label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #4a5568;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+/* ───────── Inputs ───────── */
+.signup .input {
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  border: 2px solid #e2e8f0;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.signup .input:focus {
+  border-color: #2ecc71;
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.25);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+/* Error input */
+.signup .input.border-red-500 {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+}
+
+/* Error messages */
+.signup p[role="alert"] {
+  font-size: 0.8rem;
+  color: #ef4444;
+  margin-top: 0.2rem;
+}
+
+/* ───────── Submit button ───────── */
+.signup .submit {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+}
+
+.signup .submit:hover:not(:disabled) {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #27ae60, #219653);
+  box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
+}
+
+/* Disabled button */
+.signup .submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ───────── Links section ───────── */
+.signup .mt-4 {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #4a5568;
+}
+
+.signup .text-primary {
+  color: #2ecc71;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.signup .text-primary:hover {
+  color: #27ae60;
+  text-decoration: underline;
+}
+
+/* ───────── Animations ───────── */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

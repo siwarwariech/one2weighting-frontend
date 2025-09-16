@@ -1,0 +1,68 @@
+/* src/index.css — after @tailwind base/components/utilities */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* -------- Global tweaks -------- */
+:root {
+  @apply bg-surface text-gray-800;
+}
+
+.dark :root {
+  @apply bg-gray-900 text-gray-100;
+}
+
+/* Fancy focus states */
+*:focus-visible {
+  @apply outline-none ring-2 ring-primary ring-offset-2;
+}
+
+/* Re-usable components */
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-md
+         bg-primary px-4 py-2 font-medium text-white shadow-sm
+         transition-transform duration-200 hover:brightness-110
+         active:scale-95 disabled:opacity-50;
+}
+
+.input {
+  @apply w-full rounded-md border outline-none border-outline
+         bg-surface2 px-3 py-2 shadow-inner
+         placeholder:text-gray-400
+         focus:border-primary focus:bg-white;
+}
+
+.card {
+  @apply rounded-2xl bg-surface p-6 drop-shadow-card;
+}
+.btn-rounded {
+  @apply inline-flex items-center justify-center w-10 h-10 rounded text-white hover:brightness-110;
+}
+.btn-blue   { @apply bg-sky-500; }
+.btn-yellow { @apply bg-amber-400; }
+
+/* Add these to your CSS */
+.input {
+  @apply p-2 border rounded w-full;
+}
+.input:focus {
+  @apply outline-none ring-1 ring-primary border-primary;
+}
+.submit {
+  @apply w-full bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark transition;
+}
+.error {
+  @apply text-red-500 text-xs mt-1;
+}
+
+/* Minimal flat avatar */
+.avatar {
+  border-radius: 50%;
+  border: 1px solid #e5e7eb;
+}
+
+/* User name and sign-out link styling */
+.user-info {
+  font-size: 14px;
+  color: #374151;
+}
